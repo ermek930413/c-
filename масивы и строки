@@ -1,0 +1,120 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        // Задаем двумерный массив символов
+        char[,] charArray = new char[,] 
+        {
+            { 'H', 'e', 'l', 'l', 'o' },
+            { 'W', 'o', 'r', 'l', 'd' }
+        };
+
+        // Создаем строку из символов массива
+        string str = "";
+        for (int i = 0; i < charArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < charArray.GetLength(1); j++)
+            {
+                str += charArray[i, j];
+            }
+        }
+
+        Console.WriteLine("Строка из двумерного массива символов: " + str);
+    }
+}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string inputString = "HeLLo WorlD!";
+        string outputString = "";
+
+        foreach (char c in inputString)
+        {
+            outputString += Char.ToLower(c);
+        }
+
+        Console.WriteLine("Исходная строка: " + inputString);
+        Console.WriteLine("Результирующая строка: " + outputString);
+    }
+}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string inputString = "А роза упала на лапу Азора"; // Произволная строка, которую мы будем проверять на палиндром
+
+        string cleanedString = CleanString(inputString);
+        string reversedString = ReverseString(cleanedString);
+        
+        bool isPalindrome = cleanedString.Equals(reversedString, StringComparison.OrdinalIgnoreCase);
+        
+        Console.WriteLine($"Исходная строка: {inputString}");
+        Console.WriteLine($"Очищенная строка: {cleanedString}");
+        Console.WriteLine($"Перевернутая строка: {reversedString}");
+        
+        if (isPalindrome)
+        {
+            Console.WriteLine("Строка является палиндромом.");
+        }
+        else
+        {
+            Console.WriteLine("Строка не является палиндромом.");
+        }
+    }
+    
+    public static string CleanString(string str)
+    {
+        char[] charArray = str.ToLower().ToCharArray();
+        string cleanedString = "";
+        
+        foreach (char c in charArray)
+        {
+            if (char.IsLetter(c))
+            {
+                cleanedString += c;
+            }
+        }
+        
+        return cleanedString;
+    }
+    
+    public static string ReverseString(string str)
+    {
+        char[] charArray = str.ToCharArray();
+        Array.Reverse(charArray);
+        
+        return new string(charArray);
+    }
+}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string inputString = "Пример строки для задания"; // Исходная строка, состоящая из слов, разделенных пробелами
+
+        string reversedString = ReverseWords(inputString);
+        
+        Console.WriteLine($"Исходная строка: {inputString}");
+        Console.WriteLine($"Строка с обратным порядком слов: {reversedString}");
+    }
+    
+    public static string ReverseWords(string str)
+    {
+        string[] words = str.Split(' '); // Разбиваем исходную строку на слова
+
+        Array.Reverse(words); // Переворачиваем массив слов
+
+        string reversedString = string.Join(" ", words); // Объединяем слова обратно в строку с разделителем - пробелом
+
+        return reversedString;
+    }
+}
